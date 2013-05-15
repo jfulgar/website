@@ -1,0 +1,71 @@
+<?php
+	class Authentication {
+		public function sessionIn($userName, $userID, $admin) {
+			$_SESSION['user'] = $userName;
+			$_SESSION['check'] = md5($_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT'].'KEO');
+			$_SESSION['userID'] = $userID; 
+			if(!isset($_SESSION['initiated'])){
+				session_regenerate_id();
+				$_SESSION['initiated'] = 1;
+			}
+			if($admin == 'yes'){
+				$_SESSION['admin'] = 'yes';
+			}
+			$_SESSION['timeout'] = time();
+		}
+		public function cookieIn($userName, $userID, $admin, $time) {
+			if($time == NULL){
+				$time = time()+60*60*24*30;
+			}
+			setcookie("user",$userName,$time);
+			setcookie("check",md5($_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT'].'KEO'),$time);
+			setcookie("userID",$userID,$time);
+			if($admin == 'yes'){
+				setcookie("admin",'yes',$time);
+			}
+		}
+		public function isAuthorized($timeoutPeriod) {
+			if(isset($_COOKIE['user']) && $_COOKIE['check'] == md5($_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT'].'KEO') && isset($_COOKIE['userID']) ) {
+				$_SESSION['user'] = $_COOKIE['user'];
+				$_SESSION['check'] = md5($_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT'].'KEO');
+				$_SESSION['userID'] = $_COOKIE['userID'];
+				$_SESSION['initiated'] = true;
+				if($_COOKIE['admin'] == 'yes'){
+					$_SESSION['admin'] = 'yes';
+				}
+				return true;
+			} else {
+				if($_SESSION['timeout'] + $timeoutPeriod < time()){
+					sessionOutKeo();
+					return false;
+				} else {
+					if(isset($_SESSION['user']) && $_SESSION['check'] == md5($_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT'].'KEO') && isset($_SESSION['userID']) && $_SESSION['initiated']) {
+						return true;
+					} else {
+						session_regenerate_id();
+						return false;
+						
+					}
+				}
+			}
+		}
+		public function saltMD5($string) {
+			$salt1 = '%$^$';
+			$salt2 = '*^__KEO';
+			return md5($salt1 . $string . $salt2);
+		}
+		public function cookieOut() {
+			setcookie("user",'',time()-3600);
+			setcookie("check",'',time()-3600);
+			setcookie("userID",'',time()-3600);
+			setcookie("admin",'',time()-3600);
+		}
+		public function sessionOut() {
+			$_SESSION = array();
+			if(session_id() != '' || isset($_COOKIE[session_name()])) {
+				setcookie(session_name(), '', time() - 3600);
+				session_destroy();
+			}
+		}
+	}
+?>

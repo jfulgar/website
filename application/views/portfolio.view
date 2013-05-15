@@ -1,0 +1,22 @@
+<div id="wrapper">
+	<header>
+		<div class="hidden">
+			<h1>Keo Strife</h1>
+			<p>This website is done by Keo Strife, and this content is purely for SEO purpose</p>
+			<p>Keo Strife, Strife, Key Words</p>
+		</div>
+		<h1> Portfolio </h1>
+	</header>
+	
+	<section>
+
+	</section>
+
+	<footer class="hidden">
+    	<p>Copyright &copy; Keo Strife - 2013</p>
+    </footer>
+</div><!--Close Wrapper-->
+<script>
+	var preload_imageList = [];
+	//preload_imageList.push('images/example.png');
+</script>

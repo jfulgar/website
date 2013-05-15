@@ -1,0 +1,33 @@
+<?php
+	
+	class Strife {
+		public function getRouteFloor($request_array){
+			$floorCount = count($request_array);
+			if($floorCount < 2) {
+				return 0;
+			} else if ($floorCount == 2) {
+				return 1;
+			} else {
+				if($request_array[$floorCount - 1] == ''){
+					return $floorCount - 2;
+				} else {
+					return $floorCount - 1;
+				}
+			}
+		}
+		public function cachePage($cachefile, $content, $timeout){
+			if(file_exists($cachefile) && (time() - $timeout< filemtime($cachefile))){
+				include($cachefile);
+		        echo "<!-- Cached ".date('jS F Y H:i', filemtime($cachefile))." -->";
+		        exit;
+			} else {
+				ob_start();
+				$content();
+				$fp = fopen($cachefile, 'w');
+				fwrite($fp, ob_get_contents());
+				fclose($fp);
+				ob_end_flush();
+			}
+		}
+	};
+?>

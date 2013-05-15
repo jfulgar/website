@@ -1,0 +1,12 @@
+//===bootstrap
+@import "frame";
+//@import "animate";
+@import "main";
+
+@import "compass/reset";
+//@import "compass/css3";
+
+
+//Go!!!!!!
+@include init;
+@include wrapper;

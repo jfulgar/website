@@ -1,0 +1,25 @@
+<?php
+	/*bootstrap
+	 *uncomment stuffs that u use
+	 */
+	
+	//include($_SERVER['DOCUMENT_ROOT'].BASE.'/application/libraries/utility.library');
+	//include($_SERVER['DOCUMENT_ROOT'].BASE.'/application/helpers/authentication.helper');
+	//include($_SERVER['DOCUMENT_ROOT'].BASE.'/application/helpers/form.helper');
+	class Keo extends Strife {
+		//public $authentication;
+		//public $input;
+		public function __construct()
+		{
+			//$this->authentication = new Authentication;
+			//$this->input = new Form;
+		}
+
+		public function init(){
+			//ob_start();
+			//session_start();
+			date_default_timezone_set('America/Toronto');
+		}
+	}
+	$keo = new Keo();
+?>
