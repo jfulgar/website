@@ -41,6 +41,8 @@
 			},60*30);
 		} else if ($strife_request[1] == 'portfolio') {
 			$jeff->cachePage('cache/portfolio.html',function(){
+				global $jeff;
+				$posts = $jeff->getAllPost();
 				$strife_title = 'Strife || Portfolio';
 				include('application/templates/head.template');
 				include('application/views/portfolio.view');
@@ -84,7 +86,10 @@
 					include('application/templates/foot.template');
 				},60*30);
 			} else {
-				print_r($post);
+				$strife_title = 'Case Study - '.$post['postTitle'];
+				include('application/templates/head.template');
+				include('application/views/posts.view');
+				include('application/templates/foot.template');
 			}
 		} else {
 			$jeff->cachePage('cache/404.html',function(){

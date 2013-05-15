@@ -1,0 +1,24 @@
+<div id="wrapper">
+	<header>
+		<div class="hidden">
+			<h1>Keo Strife</h1>
+			<p>This website is done by Keo Strife, and this content is purely for SEO purpose</p>
+			<p>Keo Strife, Strife, Key Words</p>
+		</div>
+		<h1> <?php echo $post['postTitle']; ?> </h1>
+	</header>
+	
+	<section>
+		<small>Posted in: <?php echo $post['postDate'] ?></small>
+		<small>Last edited: <?php echo $post['lastModified']; ?></small>
+		<p><?php echo $post['postContent']; ?></p>
+	</section>
+
+	<footer class="hidden">
+    	<p>Copyright &copy; Jeffrey Ace Fulgar - 2013</p>
+    </footer>
+</div><!--Close Wrapper-->
+<script>
+	var preload_imageList = [];
+	//preload_imageList.push('images/example.png');
+</script>

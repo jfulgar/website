@@ -9,11 +9,35 @@
 	</header>
 	
 	<section>
+		<?php
+			//get the first post (start with index 0), title
+			print('title of post 1: '.$posts[0]['postTitle']."||");
 
+			//get the second post (index 1 from 2), content
+			print('content of post 2: '.$posts[1]['postContent']."||");
+
+			//get the first post, date
+			print('date of post 1: '.$posts[0]['postDate']."||");
+
+			//get the 2nd post, last edited date
+			print('last modified date of post 2: '.$posts[1]['lastModified']."END SAMPLE");
+
+			//post 3 will be $posts[2]['....']
+
+			//start a loop to design a template for all posts
+			for($i = 0; $i < count($posts); $i++) {
+				echo '<div class="posts">';
+					echo '<h1>', $posts[$i]['postTitle'], '</h1>';
+					echo '<small>', $posts[$i]['postDate'], '</small>';
+					echo '<p>', $posts[$i]['postContent'], '</p>';
+					echo '<a href="', BASE, '/portfolio/', $i + 1,'"> Click here to go to post ', $i, ' </a>';
+				echo '</div>';
+			}
+		?>
 	</section>
 
 	<footer class="hidden">
-    	<p>Copyright &copy; Keo Strife - 2013</p>
+    	<p>Copyright &copy; Jeffrey Ace Fulgar - 2013</p>
     </footer>
 </div><!--Close Wrapper-->
 <script>

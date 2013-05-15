@@ -16,8 +16,8 @@
 		}
 
 		public function init(){
-			ob_start();
-			session_start();
+			//ob_start();
+			//session_start();
 			date_default_timezone_set('America/Toronto');
 		}
 
@@ -35,6 +35,18 @@
 			$getThisPost->execute();
 			if($getThisPost->rowCount() == 1){
 				$post = $getThisPost->fetch();
+				return $post;
+			} else {
+				return FALSE;
+			}
+		}
+
+		public function getAllPost(){
+			global $dbk;
+			$getThisPost = $dbk->prepare('SELECT * FROM posts');
+			$getThisPost->execute();
+			if($getThisPost->rowCount() > 0){
+				$post = $getThisPost->fetchAll();
 				return $post;
 			} else {
 				return FALSE;
