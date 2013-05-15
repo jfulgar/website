@@ -4,18 +4,15 @@
 	<script src="<?php echo BASE; ?>/js/jquery-ui.min.js"></script>
 	
 	<script src="<?php echo BASE; ?>/js/jquery.preload-min.js"></script>
-	<script src="<?php echo BASE; ?>/js/angular.min.js"></script>
-	<script src="<?php echo BASE; ?>/js/strife.angular.js"></script>
+	<script src="<?php echo BASE; ?>/js/strife.js"></script>
 	-->
 	<script src="<?php echo BASE; ?>/js/jquery-1.9.1.min.js"></script>
-	<script src="<?php echo BASE; ?>/js/strife.js"></script>
-	<script src="<?php echo BASE; ?>/js/main.js"></script>
+	
 	<script>
 		//bootstrap
-		window.onload = function(){
-			Strife.Keo();
-		}
-			
+		$(document).ready(function(e){
+			//js code goes here
+		});			
 	</script>
 </body>
 </html>

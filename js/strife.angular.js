@@ -1,1 +1,0 @@
-var Strife = angular.module('Strife', []);
