@@ -6,7 +6,7 @@
 	//include($_SERVER['DOCUMENT_ROOT'].BASE.'/application/libraries/utility.library');
 	//include($_SERVER['DOCUMENT_ROOT'].BASE.'/application/helpers/authentication.helper');
 	//include($_SERVER['DOCUMENT_ROOT'].BASE.'/application/helpers/form.helper');
-	class Keo extends Strife {
+	class Jeff extends Strife {
 		//public $authentication;
 		//public $input;
 		public function __construct()
@@ -16,10 +16,30 @@
 		}
 
 		public function init(){
-			//ob_start();
-			//session_start();
+			ob_start();
+			session_start();
 			date_default_timezone_set('America/Toronto');
 		}
+
+		public function countPost(){
+			global $dbk;
+			$countPost = $dbk->prepare('SELECT * FROM posts');
+			$countPost->execute();
+			return $countPost->rowCount();
+		}
+
+		public function getPost($postID) {
+			global $dbk;
+			$getThisPost = $dbk->prepare('SELECT * FROM posts WHERE postID=?');
+			$getThisPost->bindParam(1, $postID);
+			$getThisPost->execute();
+			if($getThisPost->rowCount() == 1){
+				$post = $getThisPost->fetch();
+				return $post;
+			} else {
+				return FALSE;
+			}
+		}
 	}
-	$keo = new Keo();
+	$jeff = new Jeff();
 ?>
