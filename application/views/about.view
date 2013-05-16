@@ -16,7 +16,3 @@
     	<p>Copyright &copy; Keo Strife - 2013</p>
     </footer>
 </div><!--Close Wrapper-->
-<script>
-	var preload_imageList = [];
-	//preload_imageList.push('images/example.png');
-</script>
