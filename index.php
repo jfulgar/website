@@ -1,5 +1,5 @@
 <?php
-	define('BASE','/jfulgar');
+	define('BASE','/125');
 	include('application/core/keo.strife');
 	include('application/core/connect.strife');
 	include('application/models/main.model');
