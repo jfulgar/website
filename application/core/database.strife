@@ -1,7 +1,7 @@
 <?php
 	//database config
 	$db_hostname = "localhost";
-	$db_username = "";
-	$db_password = "";
-	$db_database = "test";
+	$db_username = "jful3325_admin";
+	$db_password = "qwer1234";
+	$db_database = "jful3325_website";
 ?>
