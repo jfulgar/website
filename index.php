@@ -1,5 +1,5 @@
 <?php
-	define('BASE','/125');
+	define('BASE','/jfulgar');
 	include('application/core/keo.strife');
 	include('application/core/connect.strife');
 	include('application/models/main.model');
@@ -62,6 +62,15 @@
 				include('application/views/gallery.view');
 				include('application/templates/foot.template');	
 			},60*30);
+		} else if ($strife_request[1] == 'admin') {
+			$jeff->http_authentication('admin','123123', function(){
+
+				$strife_title = 'Admin';
+				include('application/templates/head.template');
+				include('application/views/admin.view');
+				include('application/templates/foot.template');	
+			});
+			
 		} else {
 			$jeff->cachePage('cache/404.html',function(){
 				$strife_title = 'Strife || 404';
