@@ -36,7 +36,7 @@
 				return true;
 			} else {
 				if($_SESSION['timeout'] + $timeoutPeriod < time()){
-					sessionOutKeo();
+					$this->sessionOut();
 					return false;
 				} else {
 					if(isset($_SESSION['user']) && $_SESSION['check'] == md5($_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT'].'KEO') && isset($_SESSION['userID']) && $_SESSION['initiated']) {

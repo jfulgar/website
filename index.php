@@ -63,13 +63,22 @@
 				include('application/templates/foot.template');	
 			},60*30);
 		} else if ($strife_request[1] == 'admin') {
-			$jeff->http_authentication('admin','123123', function(){
-
+			if($jeff->authentication->isAuthorized(60*60)){
 				$strife_title = 'Admin';
 				include('application/templates/head.template');
 				include('application/views/admin.view');
 				include('application/templates/foot.template');	
-			});
+			} else {
+				$strife_title = 'Login';
+				include('application/templates/head.template');
+				include('application/views/login.view');
+				include('application/templates/foot.template');	
+			}
+		} else if ($strife_request[1] == 'signout') {
+			$jeff->authentication->sessionOut();
+			$jeff->authentication->cookieOut();
+				
+			
 			
 		} else {
 			$jeff->cachePage('cache/404.html',function(){

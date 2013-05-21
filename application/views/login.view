@@ -1,0 +1,19 @@
+<div id="wrapper">
+	<header>
+		
+		<h1> Login </h1>
+	</header>
+	
+	<section>
+		<form action="<?php echo BASE; ?>/formHandler.php" method="post">
+			<label for="userID">User: </label> <input type="text" name="userID">
+			<label for="pass">Pass: </label> <input type="text" name="pass">
+			<label for="remember">Remember me: </label> <input type="checkbox" value="yes" name="remember">
+			<input type="submit" name="login_submit">
+		</form>
+	</section>
+
+	<footer class="hidden">
+    	<p>Copyright &copy; Keo Strife - 2013</p>
+    </footer>
+</div><!--Close Wrapper-->
